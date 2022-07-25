@@ -1,0 +1,17 @@
+/// <reference types="cypress" />
+
+describe('Validate Status Code', () => {
+    it('Sucessfully validate status code', () => {
+        cy.request('https://pokeapi.co/api/v2/pokemon/ditto').as('pokemon')
+        cy.get('@pokemon').its('status').should('equal', 200)
+    });
+
+    // Another Code
+    it('Successfully validate status code', () => {
+        cy.request({
+            method: 'GET',
+            url: 'https://reqres.in/api/users?pages=2&per_pages=1&delay=3',
+        }).as('users')
+        cy.get('@users').its('status').should('equal', 200)
+    });
+})
